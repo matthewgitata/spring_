@@ -3,7 +3,7 @@ package com.matthewgitata.springdi.services;
 /**
  * created by @matthewgitata on 16/03/2023
  */
-@Profile("ES")
+@Profile({"ES", "default"})
 @Service("i18nService")
 public class I18nSpanishService implements GreetingService {
     @Override
