@@ -1,0 +1,22 @@
+package com.matthewgitata.springdi.controllers;
+
+import com.matthewgitata.springdi.services.GreetingService;
+
+/**
+ * The {@code MyController} class here is used to show
+ * dependency injection in Spring.
+ */
+
+@Controller
+public class MyController {
+
+    private final GreetingService greetingService;
+
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello() {
+        return greetingService.sayGreeting();
+    }
+}
