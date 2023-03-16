@@ -1,5 +1,10 @@
 package com.matthewgitata.springdi.controllers;
 
+/**
+ * The {@code MyController} class here is used to show
+ * dependency injection in Spring.
+ */
+
 @Controller
 public class MyController {
     public String sayHello() {
