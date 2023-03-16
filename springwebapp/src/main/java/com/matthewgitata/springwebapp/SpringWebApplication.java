@@ -1,4 +1,4 @@
-package com.matthewgitata.demo;
+package com.matthewgitata.springwebapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,6 @@
-package com.matthewgitata.demo.controllers;
+package com.matthewgitata.springwebapp.controllers;
 
-import com.matthewgitata.demo.repositories.BookRepository;
+import com.matthewgitata.springwebapp.repositories.BookRepository;
 
 /**
  * The {@code BookController} class configures a Book

@@ -1,4 +1,4 @@
-package com.matthewgitata.demo.domain;
+package com.matthewgitata.springwebapp.domain;
 
 import java.util.HashSet;
 import java.util.Set;

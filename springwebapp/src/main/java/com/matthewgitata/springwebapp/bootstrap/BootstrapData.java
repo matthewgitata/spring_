@@ -1,11 +1,11 @@
-package com.matthewgitata.demo.bootstrap;
+package com.matthewgitata.springwebapp.bootstrap;
 
-import com.matthewgitata.demo.domain.Author;
-import com.matthewgitata.demo.domain.Book;
-import com.matthewgitata.demo.domain.Publisher;
-import com.matthewgitata.demo.repositories.AuthorRepository;
-import com.matthewgitata.demo.repositories.BookRepository;
-import com.matthewgitata.demo.repositories.PublisherRepository;
+import com.matthewgitata.springwebapp.domain.Author;
+import com.matthewgitata.springwebapp.domain.Book;
+import com.matthewgitata.springwebapp.domain.Publisher;
+import com.matthewgitata.springwebapp.repositories.AuthorRepository;
+import com.matthewgitata.springwebapp.repositories.BookRepository;
+import com.matthewgitata.springwebapp.repositories.PublisherRepository;
 
 /**
  * The {@code BootstrapData} class initializes some data
@@ -39,7 +39,7 @@ public class BootstrapData implements CommandLineRunner {
         publisherRepository.save(publisher);
 
         System.out.println("Publisher count: " + publisherRepository.count());
-        
+
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Domain Driven Design", "123123");
         eric.getBooks().add(ddd);

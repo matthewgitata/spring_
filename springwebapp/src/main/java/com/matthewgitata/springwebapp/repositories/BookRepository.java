@@ -1,6 +1,6 @@
-package com.matthewgitata.demo.repositories;
+package com.matthewgitata.springwebapp.repositories;
 
-import com.matthewgitata.demo.domain.Book;
+import com.matthewgitata.springwebapp.domain.Book;
 
 /**
  * The {@code BookRepository} class represents a

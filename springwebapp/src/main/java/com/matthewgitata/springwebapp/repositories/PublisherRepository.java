@@ -1,6 +1,6 @@
-package com.matthewgitata.demo.repositories;
+package com.matthewgitata.springwebapp.repositories;
 
-import com.matthewgitata.demo.domain.Publisher;
+import com.matthewgitata.springwebapp.domain.Publisher;
 
 /**
  * The {@code PublisherRepository} class represents a
