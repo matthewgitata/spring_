@@ -9,7 +9,7 @@ import com.matthewgitata.springdi.services.GreetingService;
 public class ConstructorInjectedController {
     private final GreetingService greetingService;
 
-    public ConstructorInjectedController(GreetingService greetingService) {
+    public ConstructorInjectedController(@Qualifier("constructorGreetingService")GreetingService greetingService) {
         this.greetingService = greetingService;
     }
 

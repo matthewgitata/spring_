@@ -1,6 +1,6 @@
 package com.matthewgitata.springdi.controllers;
 
-import com.matthewgitata.springdi.services.GreetingServiceImpl;
+import com.matthewgitata.springdi.services.ConstructorGreetingService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +10,7 @@ class ConstructorInjectedControllerTest {
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        controller = new ConstructorInjectedController(new GreetingServiceImpl());
+        controller = new ConstructorInjectedController(new ConstructorGreetingService());
     }
 
     @org.junit.jupiter.api.Test

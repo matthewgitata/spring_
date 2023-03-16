@@ -4,8 +4,9 @@ package com.matthewgitata.springdi.services;
  * created by @matthewgitata on 16/03/2023
  */
 @Service
-public class GreetingServiceImpl implements GreetingService {
+public class SetterInjectedGreetingService implements GreetingService{
+    @Override
     public String sayGreeting() {
-        return "Hello World";
+        return "Hello World - Setter";
     }
 }

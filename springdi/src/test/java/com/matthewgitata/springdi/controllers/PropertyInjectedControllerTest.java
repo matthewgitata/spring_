@@ -1,6 +1,6 @@
 package com.matthewgitata.springdi.controllers;
 
-import com.matthewgitata.springdi.services.GreetingServiceImpl;
+import com.matthewgitata.springdi.services.ConstructorGreetingService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +12,7 @@ class PropertyInjectedControllerTest {
     void setUp() {
         controller = new PropertyInjectedController();
 
-        controller.greetingService = new GreetingServiceImpl();
+        controller.greetingService = new ConstructorGreetingService();
     }
 
     @org.junit.jupiter.api.Test

@@ -8,6 +8,7 @@ import com.matthewgitata.springdi.services.GreetingService;
 @Controller
 public class PropertyInjectedController {
 
+    @Qualifier("propertyInjectedGreetingService")
     @Autowired
     public GreetingService greetingService;
 
