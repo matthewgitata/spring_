@@ -5,9 +5,11 @@ import com.matthewgitata.springdi.services.GreetingService;
 /**
  * created by @matthewgitata on 16/03/2023
  */
+@Controller
 public class SetterInjectedController {
     private GreetingService greetingService;
 
+    @Autowired
     public void setGreetingService(GreetingService greetingService) {
         this.greetingService = greetingService;
     }

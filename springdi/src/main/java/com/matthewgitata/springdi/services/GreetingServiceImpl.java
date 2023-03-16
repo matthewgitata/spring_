@@ -3,6 +3,7 @@ package com.matthewgitata.springdi.services;
 /**
  * created by @matthewgitata on 16/03/2023
  */
+@Service
 public class GreetingServiceImpl implements GreetingService {
     public String sayGreeting() {
         return "Hello World";

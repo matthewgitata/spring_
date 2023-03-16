@@ -5,8 +5,10 @@ import com.matthewgitata.springdi.services.GreetingService;
 /**
  * created by @matthewgitata on 16/03/2023
  */
+@Controller
 public class PropertyInjectedController {
 
+    @Autowired
     public GreetingService greetingService;
 
     public String sayGreeting() {
