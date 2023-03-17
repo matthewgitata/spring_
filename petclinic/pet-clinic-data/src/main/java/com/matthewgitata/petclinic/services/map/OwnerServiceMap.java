@@ -8,6 +8,7 @@ import java.util.Set;
 /**
  * created by @matthewgitata on 17/03/2023
  */
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
 

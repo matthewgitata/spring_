@@ -8,6 +8,7 @@ import java.util.Set;
 /**
  * created by @matthewgitata on 17/03/2023
  */
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
