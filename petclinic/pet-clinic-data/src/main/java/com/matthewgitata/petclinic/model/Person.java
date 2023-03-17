@@ -6,7 +6,7 @@ package com.matthewgitata.petclinic.model;
  * <p>
  * created by @matthewgitata on 17/03/2023
  */
-public class Person{
+public class Person extends BaseEntity {
     private String firstName;
     private String lastName;
 
