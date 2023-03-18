@@ -11,6 +11,10 @@
 
     <artifactId>pet-clinic-web</artifactId>
 
+    <properties>
+        <!--Web dependencies-->
+    </properties>
+
     <dependencies>
         <dependency>
             <artifactId>pet-clinic-data</artifactId>
@@ -34,6 +38,8 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--webjars-->
+        <!--end of webjars-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -63,5 +69,14 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!--wro4j-maven-plugin-->
+                <artifactId/>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
