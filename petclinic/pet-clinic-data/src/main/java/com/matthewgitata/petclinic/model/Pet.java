@@ -9,9 +9,18 @@ import java.time.LocalDate;
  * created by @matthewgitata on 17/03/2023.
  */
 public class Pet extends BaseEntity {
+    private String name;
     private LocalDate birthDate;
     private PetType petType;
     private Owner owner;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public LocalDate getBirthDate() {
         return birthDate;
