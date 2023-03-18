@@ -1,5 +1,7 @@
 package com.matthewgitata.petclinic.model;
 
+import java.util.Set;
+
 /**
  * The {@code Vet} class is a simple JavaBean domain
  * object representing a veterinary.
@@ -7,4 +9,13 @@ package com.matthewgitata.petclinic.model;
  * created by @matthewgitata on 17/03/2023
  */
 public class Vet extends Person {
+    private Set<Specialty> specialties;
+
+    public Set<Specialty> getSpecialties() {
+        return specialties;
+    }
+
+    public void setSpecialties(Set<Specialty> specialties) {
+        this.specialties = specialties;
+    }
 }
