@@ -1,12 +1,14 @@
 package com.matthewgitata.recipeapp.domain;
 
+import java.util.Set;
+
 /**
  * created by @matthewgitata on 18/03/2023
  */
 @Entity
 public class Recipe {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
     private Integer prepTime;
@@ -17,6 +19,8 @@ public class Recipe {
     private String directions;
     // TODO: add
     // private Difficulty difficulty;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
     @Lob
     private Byte[] image;
 
