@@ -1,14 +1,14 @@
 package com.matthewgitata.petclinic.services.map;
 
 import com.matthewgitata.petclinic.model.Specialty;
-import com.matthewgitata.petclinic.services.SpecialtiesService;
+import com.matthewgitata.petclinic.services.SpecialtyService;
 import java.util.Set;
 
 /**
  * created by @matthewgitata on 18/03/2023
  */
 @Service
-public class SpecialtyMapService extends AbstractMapService<Specialty, Long> implements SpecialtiesService {
+public class SpecialtyMapService extends AbstractMapService<Specialty, Long> implements SpecialtyService {
     @Override
     public Set<Specialty> findAll() {
         return super.findAll();
