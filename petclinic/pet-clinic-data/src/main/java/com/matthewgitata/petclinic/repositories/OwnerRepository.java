@@ -5,5 +5,6 @@ import com.matthewgitata.petclinic.model.Owner;
 /**
  * created by @matthewgitata on 19/03/2023
  */
-public interface OwnerRepository extends CrudRepository<Owner, Long>{
+public interface OwnerRepository extends CrudRepository<Owner, Long> {
+    Owner findByLastName(String lastName);
 }
