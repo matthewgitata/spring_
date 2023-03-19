@@ -9,10 +9,16 @@ import java.util.Set;
  * <p>
  * created by @matthewgitata on 17/03/2023
  */
+@Entity
+@Table(name = "owners")
 public class Owner extends Person {
+    @Column(name = "address")
     private String address;
+    @Column(name = "city")
     private String city;
+    @Column(name = "telephone")
     private String telephone;
+    @OneToMany(cascade = CascadeType.ALL, mappedBY = "owner")
     private Set<Pet> pets = new HashSet<>();
 
     public String getAddress() {

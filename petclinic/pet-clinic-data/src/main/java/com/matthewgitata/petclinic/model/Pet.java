@@ -8,10 +8,18 @@ import java.time.LocalDate;
  * <p>
  * created by @matthewgitata on 17/03/2023.
  */
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity {
+    @Column(name = "name")
     private String name;
+    @Column(name = "birth_date")
     private LocalDate birthDate;
+    @ManyToOne
+    @JoinColumn("type_id")
     private PetType petType;
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
     private Owner owner;
 
     public String getName() {

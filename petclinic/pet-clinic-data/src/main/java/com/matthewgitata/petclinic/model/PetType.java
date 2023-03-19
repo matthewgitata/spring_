@@ -6,7 +6,10 @@ package com.matthewgitata.petclinic.model;
  * <p>
  * created by @matthewgitata on 17/03/2023.
  */
+@Entity
+@Table(name="types")
 public class PetType extends BaseEntity {
+    @Column(name = "name")
     private String name;
 
     public String getName() {
