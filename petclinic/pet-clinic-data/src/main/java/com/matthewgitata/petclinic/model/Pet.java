@@ -1,6 +1,8 @@
 package com.matthewgitata.petclinic.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The {@code Pet} class is a simple JavaBean domain
@@ -21,6 +23,8 @@ public class Pet extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Owner owner;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    private Set<Visit> visits = new HashSet<>();
 
     public String getName() {
         return name;
@@ -52,5 +56,13 @@ public class Pet extends BaseEntity {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
+    }
+
+    public Set<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
     }
 }

@@ -8,9 +8,15 @@ import java.time.LocalDate;
  * <p>
  * created by @matthewgitata on 18/03/2023.
  */
-public class Visit extends BaseEntity{
+@Entity
+@Table(name = "visits")
+public class Visit extends BaseEntity {
+    @Column(name = "date")
     private LocalDate date;
+    @Column(name = "description")
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
     public LocalDate getDate() {
