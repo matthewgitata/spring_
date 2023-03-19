@@ -2,6 +2,7 @@ package com.matthewgitata.recipeapp.controllers;
 
 import com.matthewgitata.recipeapp.domain.Recipe;
 import com.matthewgitata.recipeapp.service.RecipeService;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,9 +17,17 @@ class IndexControllerTest {
     IndexController controller;
 
     @org.junit.jupiter.api.BeforeEach
-    void setUp() throws Exception{
+    void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         controller = new IndexController(recipeService);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testMockMvc() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"));
     }
 
     @org.junit.jupiter.api.Test
