@@ -9,6 +9,7 @@ import java.util.Set;
  * created by @matthewgitata on 19/03/2023
  */
 @Service
+@Profile({"default", "map"})
 public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
     @Override
     public Set<Visit> findAll() {

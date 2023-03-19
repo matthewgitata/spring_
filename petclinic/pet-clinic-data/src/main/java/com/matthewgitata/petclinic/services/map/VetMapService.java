@@ -11,6 +11,7 @@ import java.util.Set;
  * created by @matthewgitata on 17/03/2023
  */
 @Service
+@Profile({"default", "map"})
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialtyService specialtyService;
