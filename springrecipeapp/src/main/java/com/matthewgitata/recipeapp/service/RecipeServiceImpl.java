@@ -4,6 +4,7 @@ import com.matthewgitata.recipeapp.domain.Recipe;
 import com.matthewgitata.recipeapp.repositories.RecipeRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -18,9 +19,21 @@ public class RecipeServiceImpl implements RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
+    @Override
     public Set<Recipe> getRecipes() {
         Set<Recipe> recipeSet = new HashSet<Recipe>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
     }
+
+    @Override
+    public Recipe findById(Long l) {
+        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
+
+        if (!recipeOptional.isPresent()) {
+            throw new RuntimeException("Recipe Not Found!");
+        }
+        return recipeOptional.get();
+    }
+
 }
