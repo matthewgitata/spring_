@@ -10,10 +10,16 @@ package com.matthewgitata.petclinic.model;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "types")
 public class PetType extends BaseEntity {
+
+    @Builder
+    public PetType(Long id, String name) {
+        super(id);
+        this.name = name;
+    }
+
     @Column(name = "name")
     private String name;
 
