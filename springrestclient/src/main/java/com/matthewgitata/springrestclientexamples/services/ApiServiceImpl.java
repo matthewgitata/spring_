@@ -30,4 +30,15 @@ public class ApiServiceImpl implements ApiService {
         UserData userData = restTemplate.getForObject(uriBuilder.toUriString(), UserData.class);
         return userData.getData();
     }
+
+    @Override
+    public Flux<User> getUsers(final Mono<Integer> limit) {
+        return WebClient.create(api_url)
+                .get()
+                .uri(uriBuilder -> uriBuilder.queryParam("limit", limit.block()).build())
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .flatMap(resp -> resp.bodyToMono(UserData.class))
+                .flatMapIterable(UserData::getData);
+    }
 }
