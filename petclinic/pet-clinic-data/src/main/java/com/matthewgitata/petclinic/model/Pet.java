@@ -32,6 +32,7 @@ public class Pet extends BaseEntity {
     @Column(name = "name")
     private String name;
     @Column(name = "birth_date")
+    @DateTimeFormat("yyyy-MM-dd")
     private LocalDate birthDate;
     @ManyToOne
     @JoinColumn("type_id")
