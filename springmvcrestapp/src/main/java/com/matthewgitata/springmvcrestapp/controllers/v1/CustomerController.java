@@ -8,6 +8,7 @@ import com.matthewgitata.springmvcrestapp.services.CustomerService;
 /**
  * created by @matthewgitata on 23/03/2023.
  */
+@Api(description="This is my Customer Controller")
 @Controller
 @RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
@@ -18,6 +19,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @ApiOperation(value="This will get a list of customers.", notes = "These are some notes about the API.")
     @GetMapping
     public ResponseEntity<CustomerListDTO> getListOfCustomers() {
         return new ResponseEntity<CustomerListDTO>(new CustomerListDTO(customerService.getAllCustomers()),

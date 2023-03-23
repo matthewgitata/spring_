@@ -5,6 +5,8 @@ package com.matthewgitata.springmvcrestapp.api.v1.model;
  */
 @Data
 public class CustomerDTO {
+
+    @ApiModelProperty(value = "This is the first name", required = true)
     private String firstName;
     private String lastName;
 
