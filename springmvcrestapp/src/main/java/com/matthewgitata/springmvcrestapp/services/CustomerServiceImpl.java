@@ -2,6 +2,7 @@ package com.matthewgitata.springmvcrestapp.services;
 
 import com.matthewgitata.springmvcrestapp.api.v1.mapper.CustomerMapper;
 import com.matthewgitata.springmvcrestapp.api.v1.model.CustomerDTO;
+import com.matthewgitata.springmvcrestapp.domain.Customer;
 import com.matthewgitata.springmvcrestapp.repositories.CustomerRepository;
 
 import java.util.List;
@@ -39,5 +40,14 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findById(id)
                 .map(customerMapper::customerToCustomerDTO)
                 .orElseThrow(RuntimeException::new);
+    }
+
+    @Override
+    public CustomerDTO createNewCustomer(CustomerDTO customerDTO) {
+        Customer customer = customerMapper.customerDtoToCustomer(customerDTO);
+        Customer savedCustomer = customerRepository.save(customer);
+        CustomerDTO returnDto = customerMapper.customerToCustomerDTO(savedCustomer);
+        returnDto.setCustomerUrl("/api/v1/customer/" + savedCustomer.getId());
+        return returnDto;
     }
 }

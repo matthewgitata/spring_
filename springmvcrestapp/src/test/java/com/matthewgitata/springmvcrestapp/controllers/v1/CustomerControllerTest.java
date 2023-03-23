@@ -5,8 +5,12 @@ import com.matthewgitata.springmvcrestapp.services.CustomerService;
 
 import java.util.Arrays;
 
+import static com.matthewgitata.springmvcrestapp.controllers.v1.AbstractRestControllerTest.asJsonString;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * created by @matthewgitata on 23/03/2023.
+ */
 class CustomerControllerTest {
 
     @Mock
@@ -61,5 +65,27 @@ class CustomerControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("firstName", equalTo("Michale")));
+    }
+
+    @org.junit.jupiter.api.Test
+    public void createNewCustomer() throws Exception {
+        //given
+        CustomerDTO customer = new CustomerDTO();
+        customer.setFirstName("Fred");
+        customer.setLastName("Flinstone");
+
+        CustomerDTO returnDto = new CustomerDTO();
+        returnDto.setFirstName(customer.getFirstName());
+        returnDto.setLastName(customer.getLastName());
+        returnDto.setCustomerUrl("/api/v1/customers/1");
+
+        when(customerService.createNewCustomer(customer)).thenReturn(returnDto);
+
+        mockMvc.perform(post("/api/v1/customers/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(customer)))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.firstName", equalTo("Fred")))
+                .andExpect(jsonPath("$.customer_url", equalTo("/api/v1/customers/1")));
     }
 }
