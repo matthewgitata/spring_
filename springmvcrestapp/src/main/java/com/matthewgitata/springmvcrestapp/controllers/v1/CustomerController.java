@@ -9,8 +9,9 @@ import com.matthewgitata.springmvcrestapp.services.CustomerService;
  * created by @matthewgitata on 23/03/2023.
  */
 @Controller
-@RequestMapping("/api/v1/customers")
+@RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
+    public static final String BASE_URL = "/api/v1/customer";
     private final CustomerService customerService;
 
     public CustomerController(CustomerService customerService) {
