@@ -2,8 +2,10 @@ package com.matthewgitata.springmvcrestapp.bootstrap;
 
 import com.matthewgitata.springmvcrestapp.domain.Category;
 import com.matthewgitata.springmvcrestapp.domain.Customer;
+import com.matthewgitata.springmvcrestapp.domain.Vendor;
 import com.matthewgitata.springmvcrestapp.repositories.CategoryRepository;
 import com.matthewgitata.springmvcrestapp.repositories.CustomerRepository;
+import com.matthewgitata.springmvcrestapp.repositories.VendorRepository;
 
 /**
  * created by @matthewgitata on 23/03/2023.
@@ -13,10 +15,12 @@ public class Bootstrap implements CommandLineRunner {
 
     private final CategoryRepository categoryRepository;
     private final CustomerRepository customerRepository;
+    private final VendorRepository vendorRepository;
 
-    public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository) {
+    public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository, VendorRepository vendorRepository) {
         this.categoryRepository = categoryRepository;
         this.customerRepository = customerRepository;
+        this.vendorRepository = vendorRepository;
     }
 
     @Override
@@ -25,6 +29,8 @@ public class Bootstrap implements CommandLineRunner {
         loadCustomers();
 
         loadCategories();
+
+        loadVendors();
     }
 
     private void loadCategories() {
@@ -67,5 +73,15 @@ public class Bootstrap implements CommandLineRunner {
         customerRepository.save(customer2);
 
         System.out.println("Customers Loaded: " + categoryRepository.count());
+    }
+
+    private void loadVendors() {
+        Vendor vendor1 = new Vendor();
+        vendor1.setName("Vendor 1");
+        vendorRepository.save(vendor1);
+
+        Vendor vendor2 = new Vendor();
+        vendor2.setName("Vendor 2");
+        vendorRepository.save(vendor2);
     }
 }
