@@ -1,6 +1,7 @@
 package com.matthewgitata.springmvcrestapp.controllers.v1;
 
 import com.matthewgitata.springmvcrestapp.api.v1.model.CustomerDTO;
+import com.matthewgitata.springmvcrestapp.controllers.RestResponseEntityExceptionHandler;
 import com.matthewgitata.springmvcrestapp.services.CustomerService;
 
 import java.util.Arrays;
@@ -25,7 +26,9 @@ class CustomerControllerTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        mockMvc = MockMvcBuilders().standAloneSetup(customerController).build();
+        mockMvc = MockMvcBuilders().standAloneSetup(customerController)
+                .setControllerAdvice(new RestResponseEntityExceptionHandler())
+                .build();
     }
 
     @org.junit.jupiter.api.Test
