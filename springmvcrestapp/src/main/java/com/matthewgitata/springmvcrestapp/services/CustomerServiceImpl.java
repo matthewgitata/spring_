@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 /**
  * created by @matthewgitata on 23/03/2023.
  */
-@Service
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerMapper customerMapper;
@@ -64,7 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO patchCustomer(Long id, final CustomerDTO customerDTO) {
+    public CustomerDTO patchCustomer(final Long id, final CustomerDTO customerDTO) {
         return customerRepository.findById(id).map(customer -> {
 
             if (customerDTO.getFirstName() != null) {
@@ -75,7 +74,10 @@ public class CustomerServiceImpl implements CustomerService {
                 customer.setLastName(customerDTO.getLastName());
             }
 
-            return customerMapper.customerToCustomerDTO(customerRepository.save(customer));
+            CustomerDTO returnDto = customerMapper.customerToCustomerDTO(customerRepository.save(customer));
+            returnDto.setCustomerUrl("/api/v1/customer/" + id);
+
+            return returnDto;
         }).orElseThrow(RuntimeException::new);
     }
 }
