@@ -136,4 +136,13 @@ class CustomerControllerTest {
                 .andExpect(jsonPath("$.lastname", equalTo("Flinstone")))
                 .andExpect(jsonPath("$customer_url", equalTo("/api/v1/customers/1")));
     }
+
+    @org.junit.jupiter.api.Test
+    public void testDeleteCustomer() throws Exception {
+        mockMvc.perform(delete("/api/v1/customers/1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+        verify(customerService).deleteCustomerById(anyLong());
+    }
+
 }

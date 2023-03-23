@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 /**
  * created by @matthewgitata on 23/03/2023.
  */
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerMapper customerMapper;
@@ -79,5 +80,10 @@ public class CustomerServiceImpl implements CustomerService {
 
             return returnDto;
         }).orElseThrow(RuntimeException::new);
+    }
+
+    @Override
+    public void deleteCustomerById(Long id) {
+        customerRepository.deleleById(id);
     }
 }
