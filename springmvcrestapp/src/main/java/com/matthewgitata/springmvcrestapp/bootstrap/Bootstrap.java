@@ -3,6 +3,7 @@ package com.matthewgitata.springmvcrestapp.bootstrap;
 import com.matthewgitata.springmvcrestapp.domain.Category;
 import com.matthewgitata.springmvcrestapp.domain.Customer;
 import com.matthewgitata.springmvcrestapp.repositories.CategoryRepository;
+import com.matthewgitata.springmvcrestapp.repositories.CustomerRepository;
 
 /**
  * created by @matthewgitata on 23/03/2023.
@@ -11,9 +12,11 @@ import com.matthewgitata.springmvcrestapp.repositories.CategoryRepository;
 public class Bootstrap implements CommandLineRunner {
 
     private final CategoryRepository categoryRepository;
+    private final CustomerRepository customerRepository;
 
-    public Bootstrap(CategoryRepository categoryRepository) {
+    public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository) {
         this.categoryRepository = categoryRepository;
+        this.customerRepository = customerRepository;
     }
 
     @Override
