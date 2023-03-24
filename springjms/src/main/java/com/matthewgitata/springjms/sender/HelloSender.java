@@ -3,6 +3,7 @@ package com.matthewgitata.springjms.sender;
 import com.matthewgitata.springjms.config.JmsConfig;
 import com.matthewgitata.springjms.model.HelloWorldMessage;
 
+import javax.management.JMException;
 import java.util.UUID;
 
 /**
@@ -13,10 +14,10 @@ import java.util.UUID;
 public class HelloSender {
 
     private final JmsTemplate jmsTemplate;
+    private final ObjectMapper objectMapper;
 
     @Scheduled(fixedRate = 2000)
     public void sendMessage() {
-        System.out.println("I'm sending a message");
         HelloWorldMessage message = HelloWorldMessage
                 .builder()
                 .id(UUID.randomUUID())
@@ -25,6 +26,32 @@ public class HelloSender {
 
         jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, message);
 
-        System.out.println("Message Sent!");
+    }
+
+    @Scheduled(fixedRate = 2000)
+    public void sendAndReceiveMessage() {
+        HelloWorldMessage message = HelloWorldMessage
+                .builder()
+                .id(UUID.randomUUID())
+                .message("Hello")
+                .build();
+
+        Message receivedMsg = jmsTemplate.sendAndReceive(JmsConfig.MY_SEND_RCV_QUEUE, new MessageCreator() {
+            @Override
+            public Message createMessage(Session session) throws Exception {
+                try {
+                    Message helloMessage = session.createTextMessage(objectMapper.writeValueAsString(message));
+                    helloMessage.setStringProperty("_type", "com.matthewgitata.springjms.model.HelloWorldMessage");
+
+                    System.out.println("Sending Hello");
+
+                    return helloMessage;
+                } catch (JsonProcessingException e) {
+                    throw new JMException("boom");
+                }
+            }
+        });
+
+        System.out.println(receivedMsg.getBody(String.class));
     }
 }
