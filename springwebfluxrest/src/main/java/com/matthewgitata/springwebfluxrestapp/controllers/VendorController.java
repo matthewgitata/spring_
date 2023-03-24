@@ -25,4 +25,9 @@ public class VendorController {
         return vendorRepository.findById(id);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/api/v1/vendors")
+    Mono<Void> create(@RequestBody Publisher<Vendor> vendorStream) {
+        return vendorRepository.saveAll(vendorStream).then();
+    }
 }

@@ -43,4 +43,20 @@ class VendorControllerTest {
                 .exchange()
                 .expectBody(Vendor.class);
     }
+
+    @org.junit.jupiter.api.Test
+    public void testCreateVendor() {
+        BDDMockito.given(vendorRepository.saveAll(any(Publisher.class)))
+                .willReturn(Flux.just(Vendor.builder().build()));
+
+        Mono<Vendor> vendorToSaveMono = Mono.just(Vendor.builder().firstName("First Name")
+                .lastName("Name Name")).build();
+
+        webTestClient.post()
+                .uri("/api/v1/vendors")
+                .body(vendorToSaveMono, Vendor.class)
+                .exchange()
+                .expectStatus()
+                .isCreated();
+    }
 }
