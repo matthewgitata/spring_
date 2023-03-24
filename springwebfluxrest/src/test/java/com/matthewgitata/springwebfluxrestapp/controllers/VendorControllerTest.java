@@ -75,4 +75,44 @@ class VendorControllerTest {
                 .expectStatus()
                 .isOk();
     }
+
+    @org.junit.jupiter.api.Test
+    public void testPatchVendorWithChanges() {
+        given(vendorRepository.findById(anyString()))
+                .willReturn(Mono.just(Category.builder().firstName("Jimmy").build()));
+
+        given(vendorRepository.save(any(Vendor.class)))
+                .willReturn(Mono.just(Vendor.builder().build()));
+
+        Mono<Vendor> vendorToUpdate = Mono.just(Vendor.builder().firstName("Jim").build());
+
+        webTestClient.patch()
+                .uri("/api/v1/vendors/someid")
+                .body(vendorToUpdate, Vendor.class)
+                .exchange()
+                .expectStatus()
+                .isOk();
+
+        verify(vendorRepository).save(any());
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testPatchVendorWithoutChanges() {
+        given(vendorRepository.findById(anyString()))
+                .willReturn(Mono.just(Category.builder().firstName("Jimmy").build()));
+
+        given(vendorRepository.save(any(Vendor.class)))
+                .willReturn(Mono.just(Vendor.builder().build()));
+
+        Mono<Vendor> vendorToUpdate = Mono.just(Vendor.builder().firstName("Jimmy").build());
+
+        webTestClient.patch()
+                .uri("/api/v1/vendors/someid")
+                .body(vendorToUpdate, Vendor.class)
+                .exchange()
+                .expectStatus()
+                .isOk();
+
+        verify(vendorRepository, never()).save(any());
+    }
 }
