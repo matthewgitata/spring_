@@ -20,7 +20,7 @@ public class CategoryController {
     }
 
     @GetMapping("/api/v1/categories/{id}")
-    Mono<Category> getById() {
+    Mono<Category> getById(@PathVariable String id) {
         return categoryRepository.findById(id);
     }
 }
