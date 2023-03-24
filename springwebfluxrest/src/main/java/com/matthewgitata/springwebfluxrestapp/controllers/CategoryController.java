@@ -23,4 +23,10 @@ public class CategoryController {
     Mono<Category> getById(@PathVariable String id) {
         return categoryRepository.findById(id);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/api/v1/categories")
+    Mono<Void> create(@RequestBody Publisher<Category> categoryStream) {
+        return categoryRepository.saveAll(categoryStream).then();
+    }
 }

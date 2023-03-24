@@ -32,12 +32,27 @@ class CategoryControllerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void getById() {
+    public void getById() {
         BDDMockito.given(categoryRepository.findById("someid"))
                 .willReturn(Mono.just(Category.builder().description("Cat1").build()));
 
         webTestClient.get().uri("/api/v1/categories/someid")
                 .exchange()
                 .expectBody(Category.class);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testCreateCategory() {
+        BDDMockito.given(categoryRepository.saveAll(any(Publisher.class)))
+                .willReturn(Flux.just(Category.builder().description("descrp").build()));
+
+        Mono<Category> catToSaveMono = Mono.just(Category.builder().description("Some Cat").build());
+
+        webTestClient.post()
+                .url("api/v1/categories")
+                .body(catToSaveMono, Category.class)
+                .exchange()
+                .expectStatus()
+                .isCreated();
     }
 }
