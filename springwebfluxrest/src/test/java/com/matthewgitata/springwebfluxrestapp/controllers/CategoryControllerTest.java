@@ -49,7 +49,7 @@ class CategoryControllerTest {
         Mono<Category> catToSaveMono = Mono.just(Category.builder().description("Some Cat").build());
 
         webTestClient.post()
-                .url("api/v1/categories")
+                .uri("api/v1/categories")
                 .body(catToSaveMono, Category.class)
                 .exchange()
                 .expectStatus()
@@ -63,7 +63,7 @@ class CategoryControllerTest {
         Mono<Category> catToUpdateMono = Mono.just(Category.builder().description("Some Cat").build());
 
         webTestClient.put()
-                .url("api/v1/categories/someid")
+                .uri("api/v1/categories/someid")
                 .body(catToUpdateMono, Category.class)
                 .exchange()
                 .expectStatus()
