@@ -6,6 +6,8 @@ package com.matthewgitata.springjms.config;
 @Configuration
 public class JmsConfig {
 
+    public static final String MY_QUEUE = "my-hello-world";
+
     @Bean
     public MessageConverter messageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
