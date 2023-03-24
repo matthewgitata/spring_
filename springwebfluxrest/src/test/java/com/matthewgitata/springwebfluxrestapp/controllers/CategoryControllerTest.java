@@ -55,4 +55,18 @@ class CategoryControllerTest {
                 .expectStatus()
                 .isCreated();
     }
+
+    @org.junit.jupiter.api.Test
+    public void testUpdate() {
+        BDDMockito.given(categoryRepository.save(any(Category.class)))
+                .willReturn(Mono.just(Category.builder().build()));
+        Mono<Category> catToUpdateMono = Mono.just(Category.builder().description("Some Cat").build());
+
+        webTestClient.put()
+                .url("api/v1/categories/someid")
+                .body(catToUpdateMono, Category.class)
+                .exchange()
+                .expectStatus()
+                .isOk();
+    }
 }
