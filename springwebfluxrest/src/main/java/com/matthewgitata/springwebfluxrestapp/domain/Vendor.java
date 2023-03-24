@@ -5,6 +5,9 @@ package com.matthewgitata.springwebfluxrestapp.domain;
  */
 @Data
 @Document
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Vendor {
     @Id
     private String id;
